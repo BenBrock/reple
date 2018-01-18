@@ -1,0 +1,22 @@
+{
+    "run": "{bin_fname}",
+    "compile" : "{compiler} {cflags} -o {bin_fname} {code_fname}",
+    "compile_args": {
+        "compiler": "g++",
+        "code_suffix": ".cpp",
+        "cflags": "-w -O3 -fopenmp"
+    },
+    "template": "{template_begin}\n{prolog_lines}\n{template_main_begin}\n{repl_lines}\n{template_end}\n",
+    "template_args": {
+        "template_begin": "#include <cstdlib>\n#include <cstdio>\n#include <unistd.h>\n#include <iostream>\n",
+        "template_main_begin": "int main(int argc, char **argv) {",
+        "template_end": "return 0;\n}",
+        "line_epilogue": ""
+    },
+    "terminal_opts": {
+        "lexer_fn": "CppLexer",
+        "lexer_class": "pygments.lexers",
+        "prolog_char": "$",
+        "enclosers": [["{", "}"]]
+    }
+}

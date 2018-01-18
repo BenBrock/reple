@@ -1,0 +1,21 @@
+{
+    "run": "{bin_fname}",
+    "compile" : "{compiler} -f elf64 {code_fname} {cflags} -o {code_fname}\\.o && {linker} -o {bin_fname} {code_fname}\\.o",
+    "compile_args" : {
+        "compiler": "nasm",
+        "cflags": "-w -O3",
+        "linker": "ld",
+        "code_suffix": ".asm"
+    },
+    "template": "{template_begin}\n{prolog_lines}\n{template_main_begin}\n{repl_lines}\n{template_end}\n",
+    "template_args": {
+        "template_begin": "global _start\nsection .text\n",
+        "template_main_begin": "_start:",
+        "template_end": "mov eax, 60\nxor rdi, rdi\nsyscall\n",
+        "line_epilogue": ""
+    },
+    "terminal_opts": {
+        "lexer_fn": "NasmLexer",
+        "lexer_class": "pygments.lexers"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "run": "upcxx-run {user_rargs} {bin_fname}",
+    "compile" : "{compiler} {cflags} -o {bin_fname} {code_fname} {lflags}",
+    "compile_args": {
+        "compiler": "g++",
+        "code_suffix": ".cpp",
+        "cflags": "-w -std=gnu++11 -O3 $(upcxx-meta PPFLAGS)",
+        "lflags": "$(upcxx-meta LDFLAGS) $(upcxx-meta LIBFLAGS)"
+    },
+    "template": "{template_begin}\n{prolog_lines}\n{template_main_begin}\n{repl_lines}\n{template_end}\n",
+    "template_args": {
+        "template_begin": "#include <cstdlib>\n#include <cstdio>\n#include <unistd.h>\n#include <iostream>\n#include <upcxx/upcxx.hpp>",
+        "template_main_begin": "int main(int argc, char **argv) {\nupcxx::init();\n",
+        "template_end": "upcxx::finalize();\nreturn 0;\n}",
+        "line_epilogue": "upcxx::barrier() ; fflush(stdout) ; fflush(stderr) ; upcxx::barrier();"
+    },
+    "terminal_opts": {
+        "lexer_fn": "CppLexer",
+        "lexer_class": "pygments.lexers",
+        "prolog_char": "$",
+        "enclosers": [["{", "}"]]
+    }
+}

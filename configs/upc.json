@@ -1,0 +1,22 @@
+{
+    "run": "mpirun {user_rargs} {bin_fname}",
+    "compile" : "{compiler} {cflags} -o {bin_fname} {code_fname}",
+    "compile_args": {
+        "compiler": "upcc",
+        "code_suffix": ".upc",
+        "cflags": "-Wc,\"-w -O3\" -Wl,\"-w -O3\""
+    },
+    "template": "{template_begin}\n{prolog_lines}\n{template_main_begin}\n{repl_lines}\n{template_end}\n",
+    "template_args": {
+        "template_begin": "#include <stdlib.h>\n#include <stdio.h>\n#include <unistd.h>\n#include <upc.h>",
+        "template_main_begin": "int main(int argc, char **argv) {\n",
+        "template_end": "return 0;\n}",
+        "line_epilogue": "upc_barrier ; fflush(stdout) ; fflush(stderr) ; upc_barrier;"
+    },
+    "terminal_opts": {
+        "lexer_fn": "CLexer",
+        "lexer_class": "pygments.lexers",
+        "prolog_char": "$",
+        "enclosers": [["{", "}"]]
+    }
+}

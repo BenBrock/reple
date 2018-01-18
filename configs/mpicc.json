@@ -1,0 +1,22 @@
+{
+    "run": "mpirun {user_rargs} {bin_fname}",
+    "compile" : "{compiler} {cflags} -o {bin_fname} {code_fname}",
+    "compile_args": {
+        "compiler": "mpicc",
+        "code_suffix": ".c",
+        "cflags": "-w -O3"
+    },
+    "template": "{template_begin}\n{prolog_lines}\n{template_main_begin}\n{repl_lines}\n{template_end}\n",
+    "template_args": {
+        "template_begin": "#include <stdlib.h>\n#include <stdio.h>\n#include <unistd.h>\n#include <mpi.h>",
+        "template_main_begin": "int main(int argc, char **argv) {\nMPI_Init(NULL, NULL);\n",
+        "template_end": "MPI_Finalize();\nreturn 0;\n}",
+        "line_epilogue": "MPI_Barrier(MPI_COMM_WORLD) ; fflush(stdout) ; fflush(stderr) ; MPI_Barrier(MPI_COMM_WORLD);"
+    },
+    "terminal_opts": {
+        "lexer_fn": "CLexer",
+        "lexer_class": "pygments.lexers",
+        "prolog_char": "$",
+        "enclosers": [["{", "}"]]
+    }
+}
