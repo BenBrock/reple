@@ -1,0 +1,22 @@
+{
+    "run": "mpirun {user_rargs} {bin_fname}",
+    "compile" : "{compiler} {cflags} -o {bin_fname} {code_fname}",
+    "compile_args": {
+        "compiler": "dash-mpic++",
+        "code_suffix": ".cpp",
+        "cflags": "-w -std=gnu++17 -O3"
+    },
+    "template": "{template_begin}\n{prolog_lines}\n{template_main_begin}\n{repl_lines}\n{template_end}\n",
+    "template_args": {
+        "template_begin": "#include <cstdlib>\n#include <cstdio>\n#include <unistd.h>\n#include <iostream>\n#include <libdash.h>",
+        "template_main_begin": "int main(int argc, char **argv) {\ndash::init(&argc, &argv);\n",
+        "template_end": "dash::finalize();\nreturn 0;\n}",
+        "line_epilogue": "dash::barrier() ; fflush(stdout) ; fflush(stderr) ; dash::barrier();"
+    },
+    "terminal_opts": {
+        "lexer_fn": "CppLexer",
+        "lexer_class": "pygments.lexers",
+        "prolog_char": "$",
+        "enclosers": [["{", "}"]]
+    }
+}
