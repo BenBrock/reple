@@ -29,7 +29,6 @@ file defined in the `/configs` directory.
 
 ```Bash
 [xiii@reple xiii]$ reple.py -env cxx
-[xiii@reple xiii]$ reple.py -env cxx
 > printf("Hello, world!\n");
 Hello, world!
 > int x = 12;
