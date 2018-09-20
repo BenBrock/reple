@@ -10,7 +10,7 @@ create a REPL for a new language or executable-based runtime system.  If your la
 or runtime system is not available, adding it will likely only take a few minutes!
 
 ## Installation
-To install reple, just clone the Git repo.  We recommand you then `chmod` our Python
+To install reple, just clone the Git repo.  We recommend you then `chmod` our Python
 script to make it runnable and add its directory to your PATH.
 
 ```Bash
