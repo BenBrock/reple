@@ -8,8 +8,8 @@
     },
     "template": "{template_begin}\n{prolog_lines}\n{template_main_begin}\n{repl_lines}\n{template_end}\n",
     "template_args": {
-        "template_begin": "#include <cstdlib>\n#include <cstdio>\n#include <unistd.h>\n#include <iostream>\n#include <BCL.hpp>",
-        "template_main_begin": "int main(int argc, char **argv) {\nBCL::init(256, true);\n",
+        "template_begin": "#include <cstdlib>\n#include <cstdio>\n#include <unistd.h>\n#include <iostream>\n#include <bcl/bcl.hpp>",
+        "template_main_begin": "int main(int argc, char **argv) {\nBCL::init();\n",
         "template_end": "BCL::finalize();\nreturn 0;\n}",
         "line_epilogue": "BCL::barrier() ; fflush(stdout) ; fflush(stderr) ; BCL::barrier();"
     },
