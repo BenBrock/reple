@@ -224,9 +224,12 @@ class Reple:
         self.in_prolog = False
         encloser_counts = [0] * len(self.enclosers)
         while True:
-            line = prompt('> ', lexer=self.lexer,
-                          style=style_from_pygments_cls(get_style_by_name('native')),
-                          history=self.history)
+            try:
+                line = prompt('> ', lexer=self.lexer,
+                              style=style_from_pygments_cls(get_style_by_name('native')),
+                              history=self.history)
+            except:
+                break
             stat = self.process_line(line.rstrip(), repl_lines, prolog_lines,
                     encloser_counts)
             if not stat:
