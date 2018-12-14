@@ -19,6 +19,9 @@ import json
 from prompt_toolkit import prompt
 from prompt_toolkit.history import InMemoryHistory
 
+from prompt_toolkit.lexers import PygmentsLexer
+from prompt_toolkit.styles import style_from_pygments_cls
+
 from pygments.styles import get_style_by_name
 from pygments.formatters import Terminal256Formatter
 
@@ -108,7 +111,7 @@ class Reple:
         self.runtime_env = runtime_env
         self.code_templ = code_templ
 
-        self.lexer = lexer
+        self.lexer = PygmentsLexer(lexer)
         self.output_dir = output_dir
 
         self.prolog_lines = []
@@ -222,7 +225,8 @@ class Reple:
         encloser_counts = [0] * len(self.enclosers)
         while True:
             line = prompt('> ', lexer=self.lexer,
-                    style=get_style_by_name('native'), history=self.history)
+                          style=style_from_pygments_cls(get_style_by_name('native')),
+                          history=self.history)
             stat = self.process_line(line.rstrip(), repl_lines, prolog_lines,
                     encloser_counts)
             if not stat:

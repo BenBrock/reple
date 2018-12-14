@@ -15,7 +15,7 @@
     },
     "terminal_opts": {
         "lexer_fn": "CppLexer",
-        "lexer_class": "pygments.lexers",
+        "lexer_class": "pygments.lexers.c_cpp",
         "prolog_char": "$",
         "enclosers": [["{", "}"]]
     }
