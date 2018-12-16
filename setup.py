@@ -15,6 +15,7 @@ setuptools.setup(
      long_description=long_description,
      long_description_content_type="text/markdown",
      url="https://github.com/BenBrock/reple",
+     install_requires=['prompt_toolkit', 'pygments'],
      packages=setuptools.find_packages(),
 
      classifiers=[
