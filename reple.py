@@ -253,8 +253,14 @@ def get_config_fname(args):
     fname = reple_path + '/configs/'
     if args.fname is not None:
         fname += args.fname
+        return fname
     else:
-        fname += args.env + '.json'
+        fname = reple_path + '/../config/reple/' + args.env + '.json'
+        if os.path.isfile(fname):
+            return fname
+        else:
+            fname = reple_path + '/configs/' + args.env + '.json'
+            return fname
     return fname
 
 if __name__ == '__main__':
@@ -263,7 +269,7 @@ if __name__ == '__main__':
     config_group = parser.add_mutually_exclusive_group(required=True)
     config_group.add_argument('-env', dest='env', type=str, help='reple\
             environment to use.  See $INSTALL_DIR/configs for included\
-            enviornments.')
+            environments.')
     config_group.add_argument('-f', dest='fname', type=str, help='File name for\
             the json config file')
     parser.add_argument('--rargs', dest='user_rargs', type=str, help='User\
