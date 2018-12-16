@@ -4,7 +4,7 @@
     "compile_args": {
         "compiler": "g++",
         "code_suffix": ".cpp",
-        "cflags": "-w -O3 -fopenmp"
+        "cflags": "-w -O3"
     },
     "template": "{template_begin}\n{prolog_lines}\n{template_main_begin}\n{repl_lines}\n{template_end}\n",
     "template_args": {
