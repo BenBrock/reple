@@ -10,24 +10,22 @@ create a REPL for a new language or executable-based runtime system.  If your la
 or runtime system is not available, adding it will likely only take a few minutes!
 
 ## Installation
-To install reple, just clone the Git repo.  We recommend you then `chmod` our Python
-script to make it runnable and add its directory to your PATH.
+Just install the `reple` pip package.
 
-```Bash
-[xiii@reple src]$ git clone https://github.com/BenBrock/reple.git
-[xiii@reple src]$ chmod a+x reple/reple.py
-[xiii@reple src]$ echo "export PATH=\$PATH:$PWD/reple" >> ~/.bashrc
+```Cpp
+[xiii@reple ~]$ pip3 install reple
+[xiii@reple ~]$ reple.py -env cxx
+> printf("Hello, World!\n");
+Hello, World!
 ```
 
-### Dependencies
-reple requires `prompt_toolkit` and `pygments`, which you can install through your favorite
-Python package management system.
+If you install the package locally, you might need to add `~/.local/bin` to your path.
 
 ## Running
 To start an interactive REPL session, call `reple.py` with the title of a configuration
 file defined in the `/configs` directory.
 
-```Bash
+```Cpp
 [xiii@reple xiii]$ reple.py -env cxx
 > printf("Hello, world!\n");
 Hello, world!
@@ -40,7 +38,7 @@ Hello, world!
 
 Some more complicated runtimes, like MPI, may have optional runtime flags.
 
-```Bash
+```Cpp
 [xiii@reple home]$ reple.py -env mpicxx --rargs "-n 8"
 > int rank, nprocs;
 > MPI_Comm_rank(MPI_COMM_WORLD, &rank);
