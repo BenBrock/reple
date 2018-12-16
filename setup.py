@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
      name='reple',
-     version='0.1',
+     version='0.1.0.1',
      scripts=['reple.py'] ,
      data_files=[('config/reple', ['configs/' + x for x in os.listdir('configs')])],
      author="Benjamin Brock",
