@@ -7,8 +7,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
      name='reple',
      version='0.1.0.1',
-     scripts=['reple.py'] ,
-     data_files=[('config/reple', ['configs/' + x for x in os.listdir('configs')])],
+     scripts=['reple/reple'] ,
      author="Benjamin Brock",
      author_email="brock@cs.berkeley.edu",
      description="\"replay-based\" REPL for compiled languages",
@@ -16,8 +15,8 @@ setuptools.setup(
      long_description_content_type="text/markdown",
      url="https://github.com/BenBrock/reple",
      install_requires=['prompt_toolkit', 'pygments'],
-     packages=setuptools.find_packages(),
-
+     packages=['reple'],
+     include_package_data=True,
      classifiers=[
          "Programming Language :: Python :: 3",
          "License :: OSI Approved :: BSD License",

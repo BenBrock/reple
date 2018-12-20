@@ -255,7 +255,7 @@ def get_config_fname(args):
         fname += args.fname
         return fname
     else:
-        fname = reple_path + '/../config/reple/' + args.env + '.json'
+        fname = reple_path + '/config/reple/' + args.env + '.json'
         if os.path.isfile(fname):
             return fname
         else:
@@ -263,7 +263,7 @@ def get_config_fname(args):
             return fname
     return fname
 
-if __name__ == '__main__':
+def run_reple(cmd_args):
     parser = argparse.ArgumentParser(description='reple, an interactive REPL \
             for executable-driven software toolchains.')
     config_group = parser.add_mutually_exclusive_group(required=True)
@@ -276,7 +276,7 @@ if __name__ == '__main__':
             options to forward at runtime', default='')
     parser.add_argument('--cargs', dest='user_cargs', type=str, help='User\
             options to forward at compile time', default='')
-    args = parser.parse_args()
+    args = parser.parse_args(cmd_args)
 
     fname = get_config_fname(args)
     config = json.load(open(fname, 'r'))

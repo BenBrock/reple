@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+
+import sys
+
+import reple
+
+if __name__ == '__main__':
+    reple.run_reple(sys.argv[1:])
