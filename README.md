@@ -14,7 +14,7 @@ Just install the `reple` pip package.
 
 ```Cpp
 [xiii@reple ~]$ pip3 install reple
-[xiii@reple ~]$ reple.py -env cxx
+[xiii@reple ~]$ reple -env cxx
 > printf("Hello, World!\n");
 Hello, World!
 ```
@@ -22,11 +22,11 @@ Hello, World!
 If you install the package locally, you might need to add `~/.local/bin` to your path.
 
 ## Running
-To start an interactive REPL session, call `reple.py` with the title of a configuration
+To start an interactive REPL session, call `reple` with the title of a configuration
 file defined in the `/configs` directory.
 
 ```Cpp
-[xiii@reple xiii]$ reple.py -env cxx
+[xiii@reple xiii]$ reple -env cxx
 > printf("Hello, world!\n");
 Hello, world!
 > int x = 12;
@@ -39,7 +39,7 @@ Hello, world!
 Some more complicated runtimes, like MPI, may have optional runtime flags.
 
 ```Cpp
-[xiii@reple home]$ reple.py -env mpicxx --rargs "-n 8"
+[xiii@reple home]$ reple -env mpicxx --rargs "-n 8"
 > int rank, nprocs;
 > MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 > MPI_Comm_size(MPI_COMM_WORLD, &nprocs);
