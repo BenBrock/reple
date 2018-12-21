@@ -1,5 +1,5 @@
 # reple
-"Replay-based" REPL for executable-based software toolchains.
+"Replay-based" REPLs for compiled languages.
 
 reple provides an "interpreter" (REPL) for compiled languages.  Each time you enter a
 line of code, reple will add the new code to your program, compile and run the new
