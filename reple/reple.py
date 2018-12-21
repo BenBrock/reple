@@ -297,3 +297,6 @@ def run_reple(cmd_args):
     reple = Reple(comp_env, runtime_env, code_templ, **terminal_opts)
 
     reple.run()
+
+if __name__ == '__main__':
+    run_reple(sys.argv[1:])
