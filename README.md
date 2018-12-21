@@ -1,13 +1,12 @@
 # reple
-Interactive REPL for executable-based software toolchains.
+"Replay-based" REPL for executable-based software toolchains.
 
-Ever wished you could have an interpreter for your executable-based compiled language
-toolchains?  reple *simulates* an interpreter to create a REPL for you.  Each time you
-enter a command, reple compiles and runs your program, printing out any new input.
+reple provides an "interpreter" (REPL) for compiled languages.  Each time you enter a
+line of code reple will add the new code to your program, compile and run the new
+iteration of your program, and then print any new output.  reple currently supports
+C, C++, Go, Rust, UPC, MPI, DASH, and BCL.
 
-The advantage to this approach is that reple only requires a simple config file to
-create a REPL for a new language or executable-based runtime system.  If your language
-or runtime system is not available, adding it will likely only take a few minutes!
+
 
 ## Installation
 Just install the `reple` pip package.
@@ -21,22 +20,60 @@ Hello, World!
 
 If you install the package locally, you might need to add `~/.local/bin` to your path.
 
-## Running
+## Usage
 To start an interactive REPL session, call `reple` with the title of a configuration
 file defined in the `/configs` directory.
 
 ```Cpp
 [xiii@reple xiii]$ reple -env cxx
-> printf("Hello, world!\n");
-Hello, world!
+> printf("Hello, World!\n");
+Hello, World!
 > int x = 12;
 > int y = x + 2;
 > std::cout << y << std::endl;
 14
->
 ```
 
-Some more complicated runtimes, like MPI, may have optional runtime flags.
+### Functions and Global Variables
+To define a new function or global variable, surround your expression
+with `$`.
+
+```Cpp
+> $void foo() {
+  printf("Hello, World!\n");
+}$
+> foo();
+Hello, World!
+```
+
+### Errors
+reple automatically detects compilation errors, printing them out for you without trashing
+your REPL state.
+
+```Cpp              
+> int x = ;                                                                                         
+/tmp/repl/repl0.cpp:8:9: error: expected expression
+int x = ;
+        ^
+1 error generated.
+>                                                                                                   
+```
+
+### Multi-Line Statements
+It also automatically detects most multi-line expressions, like if statements.
+
+```Cpp
+> int x = 12;
+> if (x == 12) {
+>   printf("Hello, World!\n");
+> }
+Hello, World!
+```
+
+### Runtime Options
+Some more complicated runtimes have optional runtime flags.  An
+example of this is the number of processes to run a program with
+in MPI.
 
 ```Cpp
 [xiii@reple home]$ reple -env mpicxx --rargs "-n 8"
@@ -54,3 +91,18 @@ Hello, world! I'm 5/8
 Hello, world! I'm 7/8
 > 
 ```
+
+## Adding New Languages
+Adding a new language to reple is easy.  All you need to do is write a short JSON file
+that describes (1) how to append REPL lines to form a program, (2) how to compile and
+run a program, and (3) terminal options, which are things like characters that enclose
+expressions that can span multiple lines (like `{}` in C).  These config files are
+typically only about 20 lines, and you can find examples in `/reple/configs`.
+
+## Issues and Contributions
+We've tested reple on MacOS, FreeBSD, and a few Linux distros.  If you run
+into any issues installing or using reple, please make an issue using our GitHub
+repo.
+
+We welcome contributions in the form of pull requests, particularly if you'd like
+to add support for a new language or runtime system.
