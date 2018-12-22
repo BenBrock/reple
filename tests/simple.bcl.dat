@@ -10,3 +10,4 @@ if (BCL::rank() == 1) {
     std::cout << ptr[i] << std::endl;
   }
 }
+quit

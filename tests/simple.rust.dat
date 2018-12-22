@@ -1,0 +1,5 @@
+println!("Hello, World!");
+let a: i32 = 10;
+let b: i32 = 12;
+let c = a + b;
+quit
