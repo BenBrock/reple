@@ -1,0 +1,9 @@
+$#include <type_traits>$
+$#include <tuple>$
+
+using integral_type = std::remove_const<const int>::type;
+
+if (std::is_same<integral_type, int>::value) {
+  printf("Aha! they are the same.\n");
+}
+quit

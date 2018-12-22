@@ -1,0 +1,6 @@
+std::cout << "Hello, World!" << std::endl;
+int x = 12;
+int y = 13;
+int z = x + y;
+std::cout << z << std::endl;
+quit
