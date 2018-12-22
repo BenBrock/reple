@@ -1,0 +1,12 @@
+printf("Hello, World! I'm rank %lu/%lu\n", BCL::rank(), BCL::nprocs());
+BCL::GlobalPtr<int> ptr = nullptr;
+if (BCL::rank() == 0) {
+  ptr = BCL::alloc<int>(BCL::nprocs());
+}
+ptr = BCL::broadcast(ptr, 0);
+ptr[BCL::rank()] = BCL::rank();
+if (BCL::rank() == 1) {
+  for (size_t i = 0; i < BCL::nprocs(); i++) {
+    std::cout << ptr[i] << std::endl;
+  }
+}
