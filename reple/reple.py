@@ -111,7 +111,7 @@ class Reple:
         self.runtime_env = runtime_env
         self.code_templ = code_templ
 
-        self.lexer = PygmentsLexer(lexer)
+        self.lexer = None if lexer is None else PygmentsLexer(lexer)
         self.output_dir = output_dir
 
         self.prolog_lines = []
