@@ -4,7 +4,7 @@
     "compile_args": {
         "compiler": "nim",
         "code_suffix": ".nim",
-        "cflags": "c"
+        "cflags": "c --hints:off --verbosity:0"
     },
     "template": "{template_begin}\n{prolog_lines}\n{template_main_begin}\n{repl_lines}\n{template_end}\n",
     "template_args": {
