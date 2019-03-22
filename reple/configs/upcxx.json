@@ -1,5 +1,5 @@
 {
-    "run": "upcxx-run {user_rargs} {bin_fname}",
+    "run": "upcxx-run -n 4 {user_rargs} {bin_fname}",
     "compile" : "{compiler} {cflags} -o {bin_fname} {code_fname} {lflags}",
     "compile_args": {
         "compiler": "g++",
