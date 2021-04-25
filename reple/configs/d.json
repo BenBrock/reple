@@ -1,0 +1,22 @@
+{
+    "run": "{bin_fname}",
+    "compile" : "{compiler} {dflags} -of={bin_fname} {code_fname}",
+    "compile_args": {
+        "compiler": "dmd",
+        "code_suffix": ".d",
+        "dflags": "-w"
+    },
+    "template": "{template_begin}\n{prolog_lines}\n{template_main_begin}\n{repl_lines}\n{template_end}\n",
+    "template_args": {
+        "template_begin": "import std;\n",
+        "template_main_begin": "void main() {",
+        "template_end": "\n}",
+        "line_epilogue": ""
+    },
+    "terminal_opts": {
+        "lexer_fn": "DLexer",
+        "lexer_class": "pygments.lexers.d",
+        "prolog_char": "$",
+        "enclosers": [["{", "}"]]
+    }
+}
