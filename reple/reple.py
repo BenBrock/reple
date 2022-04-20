@@ -225,7 +225,8 @@ class Reple:
         encloser_counts = [0] * len(self.enclosers)
         while True:
             try:
-                line = prompt('> ', lexer=self.lexer,
+                prompt_str = '... ' if (self.in_prolog or sum(encloser_counts) > 0) else '>>> '
+                line = prompt(prompt_str, lexer=self.lexer,
                               style=style_from_pygments_cls(get_style_by_name('native')),
                               history=self.history)
             except:
