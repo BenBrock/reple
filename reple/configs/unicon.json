@@ -1,0 +1,22 @@
+{
+    "run": "{bin_fname}",
+    "compile" : "{compiler} {user_cargs} {uflags} -o {bin_fname} {code_fname}",
+    "compile_args": {
+        "compiler": "unicon",
+        "code_suffix": ".icn",
+        "uflags": "-s"
+    },
+    "template": "{template_begin}\n{prolog_lines}\n{template_main_begin}\n{repl_lines}\n{template_end}\n",
+    "template_args": {
+        "template_begin": "",
+        "template_main_begin": "procedure main(argv)",
+        "template_end": "end",
+        "line_epilogue": ""
+    },
+    "terminal_opts": {
+        "lexer_fn": "UniconLexer",
+        "lexer_class": "pygments.lexers",
+        "prolog_char": "$",
+        "enclosers": [["{", "}"]]
+    }
+}
