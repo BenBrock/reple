@@ -1,0 +1,21 @@
+{
+    "run": "{bin_fname}",
+    "compile": "{compiler} build-exe {user_cargs} -femit-bin={bin_fname} {code_fname}",
+    "compile_args": {
+        "compiler": "zig",
+        "code_suffix": ".zig"
+    },
+    "template": "{template_begin}\n{prolog_lines}\n{template_main_begin}\n{repl_lines}\n{template_end}\n",
+    "template_args": {
+        "template_begin": "const std = @import(\"std\");",
+        "template_main_begin": "pub fn main() !void {",
+        "template_end": "}",
+        "line_epilogue": ""
+    },
+    "terminal_opts": {
+        "lexer_fn": "ZigLexer",
+        "lexer_class": "pygments.lexers",
+        "prolog_char": "$",
+        "enclosers": [[ "{", "}" ]]
+    }
+}
