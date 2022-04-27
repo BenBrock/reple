@@ -4,7 +4,7 @@
 reple provides an "interpreter" (REPL) for compiled languages.  Each time you enter a
 line of code, reple will add the new code to your program, compile and run the new
 iteration of your program, and then print any new output.  reple currently supports
-C, C++, Go, Rust, UPC, MPI, DASH, BCL, and Unicon.
+C, C++, D, Go, Rust, UPC, MPI, DASH, BCL, Unicon, and Zig.
 
 
 
