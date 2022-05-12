@@ -251,10 +251,14 @@ def configure_terminal_opts(terminal_opts):
 
 def get_config_fname(args):
     reple_path = os.path.dirname(os.path.realpath(__file__))
-    fname = reple_path + '/configs/'
-    if args.fname is not None:
-        fname += args.fname
-        return fname
+    fname = args.fname
+
+    if fname is not None:
+        if os.path.isfile(fname):
+            return fname
+        else:
+            fname = reple_path + '/configs/' + args.fname
+            return fname
     else:
         fname = reple_path + '/config/reple/' + args.env + '.json'
         if os.path.isfile(fname):
